@@ -224,7 +224,7 @@ st.markdown("""
     • R² Score: 0.9872<br>
     • RMSE: 0.0060<br>
     • Training Data: 5000 simulated data points<br>
-    • Kinetic Basis: • Kinetic Model: Based on Langmuir–Hinshelwood mechanism (as noted above)<br><br>
+    • Kinetic Model: Based on Langmuir–Hinshelwood mechanism (as noted above)<br><br>
     This indicates that the model explains 98.72% of the variance in yield predictions, with very low error.
     The small RMSE value confirms that the model's predicted yields closely match the actual (simulated) values.
 </div>
