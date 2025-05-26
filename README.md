@@ -2,7 +2,6 @@
 
 ## Overview
 This repository contains the frontend code for the Methanol Synthesis Yield Predictor, a Streamlit-based web application. It allows users to input reaction conditions and receive real-time predictions of methanol yield, powered by a machine learning model hosted on a separate FastAPI backend.
-Features
 
 ## Features
 - Interactive input fields for reaction conditions (Temperature, Pressure, Residence Times).
@@ -39,14 +38,14 @@ pip install -r requirements.txt
 ```
 ### How to run this project
 Clone the Repository:
-code: git clone https://github.com/AsuquoAA/methanol-yield-frontend.git
-navigating directory
+git clone https://github.com/AsuquoAA/methanol-yield-frontend.git
+cd Methanol_Yield_Prediction_Frontend
 
 ---
 
 ### 2️⃣ **Run the Streamlit App**
 ```sh
-streamlit run app.py
+streamlit run Frontend.py
 ```
 
 ### 3️⃣ **Make Predictions**
@@ -58,13 +57,12 @@ streamlit run app.py
 
 
 ## Update API URL:  
-API_URL = "https://methanol-yield-api.onrender.com/predict"
+API_URL = "https://methanol-yield-prediction.onrender.com"
 
 
 ## Deployment
-
 Deployed on Streamlit Community Cloud.  
-Connect your GitHub repository and select app.py as the entry point.
+Connect your GitHub repository and select `Frontend.py` as the entry point.
 
 ## License
 This project is licensed under the MIT License. The MIT License is a permissive open-source license that lets others use, modify, and share your code freely, as long as they include the original license and copyright notice. For a personal project like this, it means your work can be shared widely while still recognizing you as the creator.
