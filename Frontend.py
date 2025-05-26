@@ -217,4 +217,15 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-         
+st.markdown("""
+<div style="margin-top: 1.5rem; padding: 0.8rem; background-color: #e8f4fd; border-radius: 10px;">
+    <strong>Model Performance:</strong><br>
+    • Algorithm: Random Forest Regressor<br>
+    • R² Score: 0.9872<br>
+    • RMSE: 0.0060<br>
+    • Training Data: 5000 simulated data points<br>
+    • Kinetic Basis: • Kinetic Model: Based on Langmuir–Hinshelwood mechanism (as noted above)<br><br>
+    This indicates that the model explains 98.72% of the variance in yield predictions, with very low error.
+    The small RMSE value confirms that the model's predicted yields closely match the actual (simulated) values.
+</div>
+""", unsafe_allow_html=True) 
