@@ -39,7 +39,7 @@ st.markdown("""
     <br>
     Note: Predictions may be less reliable for inputs outside these standard ranges.<br><br>
     Please enter your preferred reaction conditions below to obtain the yield prediction ⬇
-    <strong>Note:</strong> The maximum achievable methanol yield in this setup is approximately <strong>75%</strong>, based on thermodynamic and process constraints.
+    <strong>Note:</strong> The maximum achievable methanol yield in this setup is approximately <strong>75%</strong>, based on thermodynamic and process constraints.<br>
   </em>
 </h5>
 """, unsafe_allow_html=True)
