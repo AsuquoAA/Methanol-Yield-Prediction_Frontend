@@ -19,7 +19,7 @@ This repository contains the frontend code for the Methanol Synthesis Yield Pred
 
 ---
 
-## Screenshots of app
+## Screenshots of the app
 **Picture 1**
 ![Output1](https://github.com/AsuquoAA/Methanol-Yield-Prediction_Frontend/blob/main/Screenshot%202025-05-26%20at%2020.50.46.png)
 
@@ -38,8 +38,8 @@ pip install -r requirements.txt
 ```
 ### How to run this project
 Clone the Repository:
-git clone https://github.com/AsuquoAA/methanol-yield-frontend.git
-cd Methanol_Yield_Prediction_Frontend
+- git clone https://github.com/AsuquoAA/methanol-yield-frontend.git
+- cd Methanol_Yield_Prediction_Frontend
 
 ---
 
