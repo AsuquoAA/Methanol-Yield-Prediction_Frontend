@@ -43,12 +43,12 @@ cd Methanol_Yield_Prediction_Frontend
 
 ---
 
-### 2️⃣ **Run the Streamlit App**
+### **Run the Streamlit App**
 ```sh
 streamlit run Frontend.py
 ```
 
-### 3️⃣ **Make Predictions**
+### **Make Predictions**
 - Enter sensor readings in the **Input Reaction Conditions** box.
 - Click **Predict Yield**.
 - View **Predicted Status & Visualizations**.
