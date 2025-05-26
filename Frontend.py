@@ -37,9 +37,10 @@ st.markdown("""
     • Pressure: 50–150 bar<br>
     • Residence Time: 1–30 s<br>
     <br>
-    Note: Predictions may be less reliable for inputs outside these standard ranges.<br><br>
+    Note: Predictions may be less reliable for inputs outside these standard ranges.<br>
+    Note: The maximum achievable methanol yield in this setup is approximately 75%, based on thermodynamic and process constraints.<br><br>
+    
     Please enter your preferred reaction conditions below to obtain the yield prediction ⬇
-    <strong>Note:</strong> The maximum achievable methanol yield in this setup is approximately <strong>75%</strong>, based on thermodynamic and process constraints.<br>
   </em>
 </h5>
 """, unsafe_allow_html=True)
