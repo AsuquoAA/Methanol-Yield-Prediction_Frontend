@@ -38,8 +38,10 @@ pip install -r requirements.txt
 ```
 ### How to run this project
 Clone the Repository:
-- git clone https://github.com/AsuquoAA/methanol-yield-frontend.git
-- cd Methanol_Yield_Prediction_Frontend
+```bash
+git clone https://github.com/AsuquoAA/methanol-yield-frontend.git
+cd Methanol_Yield_Prediction_Frontend
+```
 
 ---
 
