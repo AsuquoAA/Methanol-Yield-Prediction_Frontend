@@ -5,6 +5,7 @@ import plotly.graph_objects as go
 # __App configuration: what it renders in the browser tab__
 st.set_page_config(page_title="Methanol Synthesis Yield Predictor", page_icon="🏭",layout="centered")
 
+# -- Title Header --
 st.markdown(
     """
     <h1 style="text-align:center; color:#1f77b4; font-weight:bold; margin-bottom: 0.5rem;">
@@ -13,7 +14,7 @@ st.markdown(
     """, unsafe_allow_html=True
 )
 
-    
+# -- Introductory Information Box --    
 st.markdown("""
     <div style="
         background-color:#d7e9f7; 
@@ -51,9 +52,11 @@ st.markdown("""
     <h2 style='color:#1f77b4;'>Input Reaction Conditions</h2>
 """, unsafe_allow_html=True)
 
+# -- Input Form Section --
 with st.form(key="input_form"):
     col1, col2 = st.columns(2)
 
+    # Left column inputs
     with col1:
         temperature = st.number_input(
             "Temperature (K)", min_value=0.0, step=1.0,
@@ -66,6 +69,7 @@ with st.form(key="input_form"):
             help="Time spent in first reactor pass"
         )
 
+    # Right column inputs
     with col2:
         pressure = st.number_input(
             "Pressure (bar)", min_value=0.0, step=1.0,
@@ -78,6 +82,7 @@ with st.form(key="input_form"):
             help="Time spent in second reactor pass"
         )
 
+    # Submit Button
     submit_button = st.form_submit_button(label="🔍 Predict Yield")
 
 # Custom button styling in blue tones
@@ -99,6 +104,7 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
+# -- Helper function to generate messages and color codes based on input value --
 def writeup_for_value(value, medium, good):
     if value < medium:
         color = "red"
@@ -111,6 +117,7 @@ def writeup_for_value(value, medium, good):
         msg = "✅ Optimal range — good condition."
     return msg, color
 
+# -- Helper function to render a static gauge chart using Plotly --
 def display_static_gauge(
     value, max_val, medium, good,
     title="Gauge", 
@@ -137,15 +144,21 @@ def display_static_gauge(
     fig.update_layout(height=gauge_height, width=gauge_width)
     st.plotly_chart(fig, use_container_width=True)
     st.markdown(f"<p style='text-align:center;color:{color}; font-size:16px; margin-top:0;'>{msg}</p>", unsafe_allow_html=True)
-# --API request
+
+
+# -- API Request and Prediction Logic --
 if submit_button:
+    # Ensure no input is left zero
     if temperature == 0 or pressure == 0 or residence_time_1 == 0 or residence_time_2 == 0:
         st.error("All fields must be non-zero. Please fill in every input.")
     else:
+        # Check for inputs outside standard operating range
         is_out_of_range = (temperature < 473 or temperature > 573 or pressure < 50 or pressure > 150 or
                            residence_time_1 < 1 or residence_time_1 > 30 or residence_time_2 < 1 or residence_time_2 > 30)
         if is_out_of_range:
             st.warning("Inputs outside standard PFR ranges (Temp 473–573 K, Pressure 50–150 bar, Times 1–30 s). Results may be less reliable.")
+    
+    # Prepare payload for API
     payload = {
         "Temperature (K)": temperature,
         "Pressure (bar)": pressure,
@@ -153,6 +166,7 @@ if submit_button:
         "Residence Time (s)_2": residence_time_2
     }
 
+    # Send request and handle response
     with st.spinner("Sending request to prediction model..."):
         try:
             response = requests.post(
@@ -160,11 +174,13 @@ if submit_button:
                 json=payload,
                 timeout=15
             )
+
             if response.status_code==200:
                 result = response.json()
                 predicted_yield = (result["Predicted Percentage yield"])[:-1]
                 predicted_yield = float(predicted_yield)
 
+                # Show feedback based on yield value
                 if predicted_yield >= 65:
                     st.success(
                         f"""
@@ -181,6 +197,7 @@ if submit_button:
                             🔴 Low Yield: {predicted_yield:.2f}% — Consider adjusting process parameters.
                         """)
 
+                # Display gauges
                 display_static_gauge(predicted_yield, 100, 50, 65, title="Methanol Yield (%)")
 
                 col1, col2 = st.columns(2)
@@ -205,6 +222,8 @@ if submit_button:
         except requests.exceptions.ReadTimeout:
             st.warning("⏳ The server took too long to respond — likely waking up. Please try again in a few seconds.")
 
+
+# -- Model Description & Disclaimer --
 st.markdown("""
 <div style='
     background-color:#f0f4f8;
@@ -218,6 +237,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
+# -- Model Performance Metrics --
 st.markdown("""
 <div style='
     background-color:#f0f4f8;
